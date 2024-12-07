@@ -3,29 +3,29 @@ variable "instance" {
 }
 
 variable "region" {
-  default = "ap-south-1" 
+  default = "us-east-1" 
 }
 
 variable "ami" {
- default = "ami-053b12d3152c0cc71" 
+ default = "ami-0e2c8caa4b6378d8c" 
 }
 
 variable "profile" {
- default = "student.1"
+ default = "student.3"
 }
 
 variable "webserver_prefix" {
- default = "student.1-webserver-vm"
+ default = "student.3-webserver-vm"
 }
 
 variable "loadbalancer_prefix" {
- default = "student.1-loadbalancer-vm"
+ default = "student.3-loadbalancer-vm"
 }
 
 variable "web_docker_host_prefix" {
- default = "student.1-docker-vm"
+ default = "student.3-docker-vm"
 }
 
-variable "lb_docker_host_prefix" {
- default = "student.1-lb_docker_host-vm"
-}
+#variable "lb_docker_host_prefix" {
+# default = "student.3-lb_docker_host-vm"
+#}

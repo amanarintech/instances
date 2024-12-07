@@ -14,7 +14,7 @@ resource "aws_instance" "my_vm" {
       type        = "ssh"   
       user        = "ubuntu"
       agent       = false
-      private_key = file("/home/varun/terrafrom_base/keys/student.1-vm.key")
+      private_key = file("/home/aman/Desktop/aman/terrform_base/keys/student.3-vm-key")
     }
     inline = [
       "sudo apt install -y python3"
@@ -44,7 +44,7 @@ resource "null_resource" "install_package" {
   depends_on = [time_sleep.wait_30_seconds]
 
   provisioner "local-exec" {
-    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u root -i ./tf_ansible_${var.install_package}_inventory.ini -i ./tf_ansible_webservers_inventory.ini -i ./tf_ansible_dockerhost_inventory.ini ../ansible-playbooks/${var.playbook_name} --private-key '../keys/student.1-vm.key' "
+    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u root -i ./tf_ansible_${var.install_package}_inventory.ini ../ansible-playbooks/${var.playbook_name} --private-key '../keys/student.3-vm-key' "
   }
 }
 
