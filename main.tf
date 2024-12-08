@@ -25,7 +25,7 @@ module "webserver" {
 
 module "loadbalancer" {
   source = "./modules/linux_node"
-  instance_count = "0"
+  instance_count = "1"
   ami = "ami-0e2c8caa4b6378d8c"
   instance = "t2.micro"
   key_name = data.terraform_remote_state.network_details.outputs.key_name
@@ -34,9 +34,9 @@ module "loadbalancer" {
 tags = {
     Name = var.loadbalancer_prefix
   }
-    install_package = ""
-    playbook_name   = ""
-#    depends_on = [module.webserver]
+    install_package = "loadbalancer"
+    playbook_name   = "install-ha-proxy.yaml"
+    depends_on = [module.webserver]
 }
 
 #module "web_docker_host" {
