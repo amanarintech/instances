@@ -26,6 +26,6 @@ variable "web_docker_host_prefix" {
  default = "student.3-docker-vm"
 }
 
-#variable "lb_docker_host_prefix" {
-# default = "student.3-lb_docker_host-vm"
-#}
+variable "lb_docker_host_prefix" {
+ default = "student.3-lb_docker_host-vm"
+}
