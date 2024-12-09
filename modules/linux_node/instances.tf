@@ -14,7 +14,7 @@ resource "aws_instance" "my_vm" {
       type        = "ssh"   
       user        = "ubuntu"
       agent       = false
-      private_key = file("/home/aman/Desktop/aman/terrform_base/keys/student.3-vm-key")
+      private_key = file("/home/amanparsad/Desktop/aman/terraform_base/keys/student.3-vm-key")
     }
     inline = [
       "sudo apt install -y python3"
