@@ -44,6 +44,11 @@ resource "null_resource" "install_package" {
   depends_on = [time_sleep.wait_30_seconds]
 
   provisioner "local-exec" {
-    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u root -i /home/amanparsad/Desktop/aman/terraform_base/tf_ansible_loadbalancer_docker_inventory.ini -i /home/amanparsad/Desktop/aman/terraform_base/tf_ansible_webservers_inventory.ini /home/amanparsad/Desktop/aman/terraform_base/ansible-playbooks/install-lb-docker.yaml --private-key '../keys/student.3-vm-key' "
- }
+    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u root -i ./tf_ansible_${var.install_package}_inventory.ini ../ansible-playbooks/${var.playbook_name} --private-key '../keys/student.3-vm-key'"
+  }
+
+  provisioner "local-exec" {
+    command = "sudo apt-get install openjdk-17-jdk -y"
+  }
 }
+

@@ -59,7 +59,7 @@ module "lb_docker_host"{
   source = "./modules/linux_node"
   ami = "ami-0e2c8caa4b6378d8c"
   instance = "t2.micro"
-  instance_count = "1"
+  instance_count = "0"
   subnet_id = data.terraform_remote_state.network_details.outputs.my_subnet
   key_name = data.terraform_remote_state.network_details.outputs.key_name
   vpc_security_group_ids = data.terraform_remote_state.network_details.outputs.security_group_id_array
@@ -70,3 +70,19 @@ tags = {
     playbook_name = "install-lb-docker-host.yaml"
     depends_on = [module.web_docker_host]
 }
+
+module "jenkins_master" {
+  source = "./modules/linux_node"
+  ami    = "ami-0e2c8caa4b6378d8c"
+  instance_count = "1"
+  instance = "t2.large"
+  key_name = data.terraform_remote_state.network_details.outputs.key_name
+  subnet_id = data.terraform_remote_state.network_details.outputs.my_subnet
+  vpc_security_group_ids = data.terraform_remote_state.network_details.outputs.security_group_id_array
+  tags = {
+    Name = var.jenkins_master_prefix
+         }
+         install_package = "jenkins"
+         playbook_name = "install-jenkins-master.yaml"
+}
+

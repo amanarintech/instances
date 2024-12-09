@@ -29,3 +29,7 @@ variable "web_docker_host_prefix" {
 variable "lb_docker_host_prefix" {
  default = "student.3-lb_docker_host-vm"
 }
+
+variable "jenkins_master_prefix" {
+ default = "student.3-jenkins-vm"
+}
